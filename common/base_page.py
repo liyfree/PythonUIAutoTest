@@ -34,9 +34,11 @@ class BasePage():
             return self.driver.find_element(*loc)
         except NoSuchElementException:
             logger.warning('找不到定位元素: %s' % loc[1])
+            self.get_screen_img(loc[1])
             raise
         except TimeoutException:
             logger.warning('查找元素超时: %s' % loc[1])
+            self.get_screen_img(loc[1])
             raise
 
     def find_elements(self, *loc):
@@ -46,19 +48,22 @@ class BasePage():
             return self.driver.find_elements(*loc)
         except NoSuchElementException:
             logger.warning('找不到定位元素: %s' % loc[1])
+            self.get_screen_img(loc[1])
             raise
         except TimeoutException:
             logger.warning('查找元素超时: %s' % loc[1])
+            self.get_screen_img(loc[1])
             raise
 
     def get_screen_img(self, value):
         """将页面截图下来"""
         file_path = './report/screenshot/'
         now = time.strftime("%Y-%m-%d_%H_%M_%S_")
-        screen_name = file_path + str(value) + '_' + now + '.png'
+        file_name = str(value) + '_' + now + '.png'
+        screen_name = file_path + file_name
         try:
             self.driver.get_screenshot_as_file(screen_name)
-            logger.info("页面已截图，截图的路径在项目: %s " % file_path)
+            logger.info(f"页面已截图，截图的路径在项目: {file_path}，截图名称{file_name} ")
         except NameError as ne:
             logger.error("失败截图 %s" % ne)
             self.get_screen_img(value)
@@ -83,6 +88,7 @@ class BasePage():
             time.sleep(2)
         except AttributeError as e:
             logger.error("无法点击元素: %s" % e)
+            self.get_screen_img(loc)
             raise
 
     def clear(self, loc):
@@ -206,7 +212,8 @@ class BasePage():
             result = WebDriverWait(self.driver, timeout, 1).until(
                 EC.text_to_be_present_in_element_value(loc, value))
         except TimeoutException:
-            print("元素没定位到：" + str(loc))
+            logger.error("元素没定位到: %s" % str(loc))
+            self.get_screen_img(loc)
             return False
         else:
             return result

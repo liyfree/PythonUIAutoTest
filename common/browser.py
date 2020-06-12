@@ -13,20 +13,22 @@ class BrowserDriver(object):
     """
     驱动类，封装driver设置信息，返回
     """
-    path = './drivers/'  # 这是获取相对路径的方法
-    chrome_driver_path = path + 'chromedriver.exe'
-    firfox_driver_path = path + 'chromedriver.exe'
-    ie_driver_path = path + 'IEDriverServer.exe'
+    # path = './drivers/'  # 这是获取相对路径的方法
+    # chrome_driver_path = path + 'chromedriver.exe'
+    # firfox_driver_path = path + 'chromedriver.exe'
+    # ie_driver_path = path + 'IEDriverServer.exe'
 
-    def __init__(self, browser_name='Chrome'):
+    def __init__(self):
         self.driver = None
-        self.browser_name = browser_name
         self.config = Config()
+        self.browser_name = self.config.get('browser').get('name')  # 从配置文件读取浏览器名称
+        self.driver_path = self.config.get('browser').get('driver_path')  # 从配置文件读取driver地址
         logger.info(f"选择的浏览器为: {self.browser_name}浏览器")
-        url = self.config.get('pathUrl').get('URL')  # 从配置文件读取访问地址
+        url = self.config.get('URL')  # 从配置文件读取访问地址
         logger.info(f"打开的URL为: {url}")
+
         if self.browser_name == "Firefox":
-            self.driver = webdriver.Firefox(executable_path=self.firfox_driver_path)
+            self.driver = webdriver.Firefox(executable_path=self.driver_path)
             logger.info("启动火狐浏览器")
         elif self.browser_name == "Chrome":
             chrome_options = Options()
@@ -38,10 +40,10 @@ class BrowserDriver(object):
             chrome_options.add_argument('--headless')  # 浏览器不提供可视化页面. linux下如果系统不支持可视化不加这条会启动失败
             chrome_options.add_argument('--disable-extensions')
             chrome_options.add_argument('lang=zh_CN.UTF-8')
-            self.driver = webdriver.Chrome(options=chrome_options, executable_path=self.chrome_driver_path)
+            self.driver = webdriver.Chrome(options=chrome_options, executable_path=self.driver_path)
             logger.info("启动谷歌浏览器")
         elif self.browser_name == "IE":
-            self.driver = webdriver.Ie(executable_path=self.ie_driver_path)
+            self.driver = webdriver.Ie(executable_path=self.driver_path)
             logger.info("启动IE浏览器")
 
         self.driver.get(url)

@@ -196,9 +196,9 @@
         
     <div class='page-header'>
         <h1>测试报告</h1>
-    <p class='attribute'><strong>开始时间:</strong> 2020-06-12 17:47:22</p>
-<p class='attribute'><strong>运行时长:</strong> 0:00:56.142212</p>
-<p class='attribute'><strong>状态:</strong> 通过 6</p>
+    <p class='attribute'><strong>开始时间:</strong> 2020-06-12 22:27:01</p>
+<p class='attribute'><strong>运行时长:</strong> 0:01:29.601267</p>
+<p class='attribute'><strong>状态:</strong> 通过 6 错误 1</p>
 
     </div>
     <div style="float: left;width:50%;"><p class='description'>测试用例执行情况</p></div>
@@ -229,51 +229,91 @@
             <td>查看</td>
         </tr>
         
-    <tr class='passClass'>
-        <td>test_login_page.TestLoginPage</td>
-        <td>6</td>
-        <td>6</td>
+    <tr class='errorClass'>
+        <td>test_baidu.test_baidu.TestBaidu</td>
+        <td>1</td>
         <td>0</td>
         <td>0</td>
-        <td><a href="javascript:showClassDetail('c1',6)">详情</a></td>
+        <td>1</td>
+        <td><a href="javascript:showClassDetail('c1',1)">详情</a></td>
     </tr>
 
-<tr id='pt1.1' class='hiddenRow'>
+<tr id='ft1.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_baidu</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        错误</a>
+
+    <div id='div_ft1.1' class="popup_window">
+        <pre>
+        ft1.1: Traceback (most recent call last):
+  File "/Users/huangyan/PycharmProjects/PythonUIAutoTest/testcase/test_baidu/test_baidu.py", line 22, in test_baidu
+    self.page.input_text('Python')
+  File "/Users/huangyan/PycharmProjects/PythonUIAutoTest/page/baidu_page.py", line 18, in input_text
+    self.send_key(self.input_loc, text)
+  File "/Users/huangyan/PycharmProjects/PythonUIAutoTest/common/base_page.py", line 73, in send_key
+    self.find_element(*loc).clear()
+  File "/Users/huangyan/PycharmProjects/PythonUIAutoTest/common/base_page.py", line 33, in find_element
+    WebDriverWait(self.driver, 30,  0.5).until(lambda driver: driver.find_element(*loc).is_displayed())
+  File "/Users/huangyan/PycharmProjects/PythonUIAutoTest/venv/lib/python3.7/site-packages/selenium/webdriver/support/wait.py", line 80, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    <tr class='passClass'>
+        <td>test_sadmin.test_login_page.TestLoginPage</td>
+        <td>6</td>
+        <td>6</td>
+        <td>0</td>
+        <td>0</td>
+        <td><a href="javascript:showClassDetail('c2',6)">详情</a></td>
+    </tr>
+
+<tr id='pt2.1' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_login_1</div></td>
     <td colspan='5' align='center'>通过</td>
 </tr>
 
-<tr id='pt1.2' class='hiddenRow'>
+<tr id='pt2.2' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_login_2</div></td>
     <td colspan='5' align='center'>通过</td>
 </tr>
 
-<tr id='pt1.3' class='hiddenRow'>
+<tr id='pt2.3' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_login_3</div></td>
     <td colspan='5' align='center'>通过</td>
 </tr>
 
-<tr id='pt1.4' class='hiddenRow'>
+<tr id='pt2.4' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_login_4</div></td>
     <td colspan='5' align='center'>通过</td>
 </tr>
 
-<tr id='pt1.5' class='hiddenRow'>
+<tr id='pt2.5' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_login_5</div></td>
     <td colspan='5' align='center'>通过</td>
 </tr>
 
-<tr id='pt1.6' class='hiddenRow'>
+<tr id='pt2.6' class='hiddenRow'>
     <td class='none'><div class='testcase'>test_login_6</div></td>
     <td colspan='5' align='center'>通过</td>
 </tr>
 
         <tr id='total_row'>
             <td>总计</td>
-            <td>6</td>
+            <td>7</td>
             <td>6</td>
             <td>0</td>
-            <td>0</td>
+            <td>1</td>
             <td>&nbsp;</td>
         </tr>
     </table>
@@ -308,7 +348,7 @@
                     data:[
                         {value:6, name:'通过'},
                         {value:0, name:'失败'},
-                        {value:0, name:'错误'}
+                        {value:1, name:'错误'}
                     ],
                     itemStyle: {
                         emphasis: {

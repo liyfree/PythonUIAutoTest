@@ -11,20 +11,6 @@ BASE_PATH = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fi
 CONFIG_FILE = os.path.join(BASE_PATH, 'data', 'browser.yaml')
 
 
-# ELEMENT_PATH = os.path.join(BASE_PATH,'data','elements.yaml')
-# CASE_PATH = os.path.join(BASE_PATH,'data','testcase.yaml')
-# INTERFACE_PATH = os.path.join(BASE_PATH,'data','interface.yaml')
-# DATA_PATH = os.path.join(BASE_PATH, 'data')
-# DRIVER_PATH = os.path.join(BASE_PATH, 'drivers','chromedriver.exe')
-# LOG_PATH = os.path.join(BASE_PATH, 'logs')
-# REPORT_PATH = os.path.join(BASE_PATH, 'report')
-# SCREENSHOTS_PATH = os.path.join(BASE_PATH,"screenshots",'')
-# EXE_PATH = os.path.join(BASE_PATH,'test','Autolt','test1.jpg')
-# EXCEL_PATH = os.path.join(BASE_PATH,'test','configSQL','')
-
-# ,element = ELEMENT_PATH,case_data = CASE_PATH,
-#                  interface_data = INTERFACE_PATH,chrome = DRIVER_PATH,screenshot = SCREENSHOTS_PATH,
-#                  excel = EXCEL_PATH
 class Config:
     def __init__(self, config=CONFIG_FILE):
         self.config = YamlReader(config).data
@@ -36,3 +22,9 @@ class Config:
         """
         return self.config[index].get(element)
 
+
+if __name__ == '__main__':
+    c = Config()
+    print(c.get('browser'))
+    print(c.get('browser').get('name'))
+    print(c.get('browser').get('driver_path'))

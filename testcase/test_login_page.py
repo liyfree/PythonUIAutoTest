@@ -26,7 +26,7 @@ class TestLoginPage(unittest.TestCase):
     def tearDownClass(cls):
         cls.browser.quit_browser()
 
-    @data(*case_list)
+    @data(*case_list)  # 加载测试数据
     def test_login(self, data):
         logger.info(data)
         self.page.input_username(data['username'])

@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 # -*-coding:utf-8-*-
 
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.select import Select
-from selenium.common.exceptions import *  # 导入所有的异常类
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from common.utils.logger import Logger
 import time
+
+from selenium.common.exceptions import *  # 导入所有的异常类
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.select import Select
+from selenium.webdriver.support.ui import WebDriverWait
+
 from common.utils.config import *
+from common.utils.logger import Logger
 
 # create a logger instance
 logger = Logger(logger='BasePage').getlog()
@@ -58,6 +60,7 @@ class BasePage():
     def get_screen_img(self, value):
         """将页面截图下来"""
         file_path = './report/screenshot/'
+        file_path = os.path.join(BASE_PATH, 'report', 'screenshot')
         now = time.strftime("%Y-%m-%d_%H_%M_%S_")
         file_name = str(value) + '_' + now + '.png'
         screen_name = file_path + file_name
@@ -65,7 +68,7 @@ class BasePage():
             self.driver.get_screenshot_as_file(screen_name)
             logger.info(f"页面已截图，截图的路径在项目: {file_path}，截图名称{file_name} ")
         except NameError as ne:
-            logger.error("失败截图 %s" % ne)
+            logger.error(f"截图失败{ne}")
             self.get_screen_img(value)
 
     def send_key(self, loc, text):

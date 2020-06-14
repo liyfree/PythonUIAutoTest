@@ -2,6 +2,6 @@ browser:
   name: Chrome
   driver_path: drivers/chromedriver
 
-URL : http://lhy.52kaoyu.com/login
+URL:
 
 

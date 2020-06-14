@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # -*-coding:utf-8-*-
-from common.base_page import BasePage
 from selenium.webdriver.common.by import By
 
+from common.base_page import BasePage
 
-class BaiduPage(BasePage):
+
+class LoginPage(BasePage):
     """
     在这里写定位器，通过元素属性定位元素对象
     """

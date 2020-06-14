@@ -4,6 +4,7 @@ import os
 import sys
 import time
 import unittest
+
 from report.HTMLTestRunner3 import HTMLTestRunner
 
 
@@ -26,7 +27,7 @@ def report():
 
 def create_suite():
     suit = unittest.TestSuite()  # 测试集
-    test_dir = 'testcase'  # 测试用例文件夹
+    test_dir = 'testcase/test_gwzz'  # 测试用例文件夹
 
     discover = unittest.defaultTestLoader.discover(  # 搜索测试用例
         start_dir=test_dir,

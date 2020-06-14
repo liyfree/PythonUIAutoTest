@@ -3,6 +3,7 @@
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+
 from common.utils.config import Config
 from common.utils.logger import Logger
 

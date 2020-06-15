@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 # -*-coding:utf-8-*-
 import unittest
+
 from ddt import ddt, data
+
 from common.browser import BrowserDriver
 from common.utils import readFile
 from common.utils.logger import Logger
-from page.login_page import BaiduPage
+from page.login_page import LoginPage
 
 logger = Logger('TestLoginPage').getlog()
 
@@ -20,7 +22,7 @@ class TestLoginPage(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.browser = BrowserDriver()  # 初始化浏览器对象
-        cls.page = BaiduPage(cls.browser.get_driver())
+        cls.page = LoginPage(cls.browser.get_driver())
 
     @classmethod
     def tearDownClass(cls):

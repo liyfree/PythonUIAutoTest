@@ -18,7 +18,12 @@ class TestBaidu(unittest.TestCase):
     def tearDownClass(cls) -> None:
         cls.browser.quit_browser()
 
-    def test_baidu(self):
+    def test_baidu01(self):
         self.page.input_text('Python')
         self.page.click_search_btn()
         self.assertEqual('python', self.page.get_title())
+
+    def test_baidu02(self):
+        self.page.input_text('selenium')
+        self.page.click_search_btn()
+        self.assertEqual('selenium_百度搜索', self.page.get_title())

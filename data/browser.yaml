@@ -1,7 +1,7 @@
 browser:
   name: Chrome
-  driver_path: drivers/chromedriver
+  driver_path: drivers/chromedriver.exe
 
-URL:
+URL: http://www.baidu.com
 
 
